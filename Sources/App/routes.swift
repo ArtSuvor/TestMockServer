@@ -1,11 +1,10 @@
 import Vapor
 
-func routes(_ app: Application) throws {
-    app.get { req in
-        return "It works!"
-    }
+let authController = AuthController()
 
-    app.get("hello") { req -> String in
-        return "Hello, world!"
-    }
+func routes(_ app: Application) throws {
+    app.post("register", use: authController.register)
+    app.post("login", use: authController.login)
+    app.post("logout", use: authController.logout)
+    app.post("changedata", use: authController.changeData)
 }
