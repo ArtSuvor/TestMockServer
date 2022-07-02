@@ -7,7 +7,7 @@
 
 import Vapor
 
-class AuthController {
+final class AuthController {
     
 // MARK: - login -
     func login(_ req: Request) throws -> EventLoopFuture<LoginResponse> {
