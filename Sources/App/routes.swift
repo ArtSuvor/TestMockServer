@@ -14,4 +14,5 @@ func routes(_ app: Application) throws {
 // MARK: - Comments -
     app.get("allComments", use: commentsController.getAllCommets)
     app.post("addComment", use: commentsController.addComment)
+    app.post("deleteComment", use: commentsController.deleteComment)
 }

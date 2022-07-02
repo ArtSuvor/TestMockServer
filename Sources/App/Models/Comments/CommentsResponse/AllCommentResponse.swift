@@ -9,5 +9,6 @@ import Vapor
 
 struct AllCommentResponse: Content {
     let userId: Int
+    let commentId: Int
     let commentText: String
 }

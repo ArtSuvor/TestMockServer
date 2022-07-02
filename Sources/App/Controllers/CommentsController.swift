@@ -8,6 +8,8 @@
 import Vapor
 
 final class CommentsController {
+    
+// MARK: - getAllCommets -
     func getAllCommets(_ req: Request) throws -> EventLoopFuture<[AllCommentResponse]> {
         let firstComment = AllCommentResponse(userId: 123, commentText: "adfasdfk")
         let secondComment = AllCommentResponse(userId: 12, commentText: "asfaskheudkfajshd jdshahfdjk")
@@ -16,8 +18,9 @@ final class CommentsController {
         return req.eventLoop.future(allComments)
     }
     
+// MARK: - addComment -
     func addComment(_ req: Request) throws -> EventLoopFuture<AddCommentResponse> {
-        guard let _ = try? req.content.decode(AddCommentRequest.self) {
+        guard let _ = try? req.content.decode(AddCommentRequest.self) else {
             let errorResponse = AddCommentResponse(result: 0, resultMessage: "Error")
             return req.eventLoop.future(errorResponse)
         }
@@ -25,5 +28,14 @@ final class CommentsController {
         let response = AddCommentResponse(result: 1, resultMessage: "Success")
         return req.eventLoop.future(response)
     }
+    
+// MARK: - deleteComment -
+    func deleteComment(_ req: Request) throws -> EventLoopFuture<DeleteCommentResponse> {
+        guard let _ = try? req.content.decode(DeleteCommentRequest.self) else {
+            let errorResponse = AddCommentResponse(result: 0, resultMessage: "Error")
+            return req.eventLoop.future(errorResponse)
+        }
+        let response = DeleteCommentResponse(result: 1, resultMessage: "Success")
+        return req.eventLoop.future(response)
+    }
 }
-
