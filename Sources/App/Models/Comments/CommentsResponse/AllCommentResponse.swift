@@ -8,6 +8,11 @@
 import Vapor
 
 struct AllCommentResponse: Content {
+    let result: [CommentResponse]
+    let errorMessage: String?
+}
+
+struct CommentResponse: Content {
     let userId: Int
     let commentId: Int
     let commentText: String

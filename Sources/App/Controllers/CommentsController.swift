@@ -10,10 +10,16 @@ import Vapor
 final class CommentsController {
     
 // MARK: - getAllCommets -
-    func getAllCommets(_ req: Request) throws -> EventLoopFuture<[AllCommentResponse]> {
-        let firstComment = AllCommentResponse(userId: 123, commentId: 1231, commentText: "adfasdfk")
-        let secondComment = AllCommentResponse(userId: 12, commentId: 12, commentText: "asfaskheudkfajshd jdshahfdjk")
-        let allComments = [firstComment, secondComment]
+    func getAllCommets(_ req: Request) throws -> EventLoopFuture<AllCommentResponse> {
+        guard let _ = try? req.content.decode(AllCommentsRequest.self) else {
+            let errorResponse = AllCommentResponse(result: [],
+                                                   errorMessage: "Error")
+            return req.eventLoop.future(errorResponse)
+        }
+        let firstComment = CommentResponse(userId: 123, commentId: 1231, commentText: "adfasdfk")
+        let secondComment = CommentResponse(userId: 12, commentId: 12, commentText: "asfaskheudkfajshd jdshahfdjk")
+        let allComments = AllCommentResponse(result: [firstComment, secondComment],
+                                             errorMessage: nil)
         
         return req.eventLoop.future(allComments)
     }
