@@ -12,7 +12,7 @@ func routes(_ app: Application) throws {
     app.post("changedata", use: authController.changeData)
     
 // MARK: - Comments -
-    app.get("allComments", use: commentsController.getAllCommets)
+    app.get("allComments", use: commentsController.getAllCommetns)
     app.post("addComment", use: commentsController.addComment)
     app.post("deleteComment", use: commentsController.deleteComment)
 }
