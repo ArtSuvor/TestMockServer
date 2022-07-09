@@ -2,6 +2,7 @@ import Vapor
 
 let authController = AuthController()
 let commentsController = CommentsController()
+let basketController = BasketController()
 
 func routes(_ app: Application) throws {
     
@@ -15,4 +16,8 @@ func routes(_ app: Application) throws {
     app.get("allComments", use: commentsController.getAllCommetns)
     app.post("addComment", use: commentsController.addComment)
     app.post("deleteComment", use: commentsController.deleteComment)
+    
+// MARK: - Basket -
+    app.post("addProduct", use: basketController.addProduct)
+    app.post("deleteProduct", use: basketController.deleteProduct)
 }

@@ -11,7 +11,6 @@ final class CommentsController {
     
 // MARK: - getAllCommets -
     func getAllCommetns(_ req: Request) throws -> EventLoopFuture<AllCommentResponse> {
-       
         let firstComment = CommentResponse(userId: 123, commentId: 1231, commentText: "adfasdfk")
         let secondComment = CommentResponse(userId: 12, commentId: 12, commentText: "asfaskheudkfajshd jdshahfdjk")
         let allComments = AllCommentResponse(result: [firstComment, secondComment],
