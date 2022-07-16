@@ -14,7 +14,7 @@ final class CommentsController {
         let firstComment = CommentResponse(userId: 123, commentId: 1231, commentText: "adfasdfk")
         let secondComment = CommentResponse(userId: 12, commentId: 12, commentText: "asfaskheudkfajshd jdshahfdjk")
         let thirdComment = CommentResponse(userId: 32, commentId: 223, commentText: "asdhgfuyasd haskdfhasdhfhagsdh ghagdsfhgahsdgfakj gahdsgfjhadgfhjasgkdhf ghdsgfajgsdfhajsgdf jasdhfgasjhdgfhjasgdfkjga hdfgahjsdgjhafg asjhdgfjhasgdfjhag shdfgaueas dkjhasuehfusahjksdhfkj aseuifh asdhjk fashjkdfh.")
-        let allComments = AllCommentResponse(result: [firstComment, secondComment],
+        let allComments = AllCommentResponse(result: [firstComment, secondComment, thirdComment],
                                              errorMessage: nil)
         
         return req.eventLoop.future(allComments)
