@@ -20,4 +20,5 @@ func routes(_ app: Application) throws {
 // MARK: - Basket -
     app.post("addProduct", use: basketController.addProduct)
     app.post("deleteProduct", use: basketController.deleteProduct)
+    app.get("basketProduct", use: basketController.getAllProguctFromBasket)
 }
